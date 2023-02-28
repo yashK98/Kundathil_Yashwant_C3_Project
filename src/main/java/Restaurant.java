@@ -68,7 +68,14 @@ public class Restaurant {
 
     //Blank declaration provided with non-standard return to design test cases
     public int calculateTotalCostOfSelectedItems(List<String> orderItems){
-        return 0;
+        int total = 0;
+        for(Item i: menu){
+            for(String j:orderItems){
+                if(i.getName() == j)
+                    total+=i.getPrice();
+            }
+        }
+        return total;
     }
 
 }
