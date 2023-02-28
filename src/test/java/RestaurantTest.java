@@ -5,6 +5,8 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -78,4 +80,32 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void when_no_item_is_passed_total_should_be_zero(){
+        //List of selected items
+        List<String> orderItems = new ArrayList<>();
+
+        //Bill Amount
+        int orderValue = this.restaurant.calculateTotalCostOfSelectedItems(orderItems);
+
+        assertEquals(0,orderValue);
+
+
+    }
+
+    @Test
+    public void when_items_are_passed_total_should_return_sum_of_individual_price(){
+        this.restaurant.addToMenu("Coca Cola",10);
+        this.restaurant.addToMenu("French Fries",100);
+
+        List<String> orderItems = new ArrayList<>();
+        orderItems.add("Coca Cola");
+        orderItems.add("Vegetable lasagne");
+
+        int orderValue= this.restaurant.calculateTotalCostOfSelectedItems(orderItems);
+
+        assertEquals(10+269,orderValue);
+    }
+
 }

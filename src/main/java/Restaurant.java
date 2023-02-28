@@ -66,4 +66,9 @@ public class Restaurant {
         return name;
     }
 
+    //Blank declaration provided with non-standard return to design test cases
+    public int calculateTotalCostOfSelectedItems(List<String> orderItems){
+        return 0;
+    }
+
 }
